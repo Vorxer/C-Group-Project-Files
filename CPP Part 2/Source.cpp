@@ -3,13 +3,6 @@
 
 using namespace std;
 
-int getinput()
-{
-	int inputvalue;
-	cin >> inputvalue;
-	return inputvalue;
-}
-
 struct BankAccount {
 	int acnumber;
 	double balance;
@@ -17,11 +10,8 @@ struct BankAccount {
 	std::string password;
 
 };
+///The bank account struct
 
-void transfer(int destinatoin, int target, int amount)
-{
-
-}
 
 int getIndex(BankAccount *input, int target)
 {
@@ -38,6 +28,9 @@ int getIndex(BankAccount *input, int target)
 	}
 	return current;
 }
+///This get index function is used to take a specific account number and then find and return
+///Its corresponding index on an array
+
 
 int main()
 {
@@ -49,16 +42,17 @@ int main()
 	while (true)
 
 	{
-
-		int userid;
 		int number;
 		double acbalance;
 		std::string name;
 		std::string password;
+		///these vaiables are used to store the inputs from the user
+
 
 		int origin = 0;
 		int target = 0;
 		int tAmount = 0;
+		///initailises the variable used in the Transfer function
 
 		int command;
 		int i=0;
@@ -69,10 +63,14 @@ int main()
 		cout << "2 = Transfer" << endl;
 		cout << "3 = Exit" << endl;
 		cin >> command;
+		///Rudementary menu driven inerface
+
 
 		if (command == 3)
 		{
 			break;
+			///Breaks the loop: exits the loop is the user wishes to
+
 		}
 
 		if (command == 1)
@@ -92,13 +90,16 @@ int main()
 			cout << "enter your accoutnt balance:";
 			cin >> acbalance;
 			cout << endl;
+			///This is prompting the user for input and asigning the inputs to the variables declared above
+
 
 
 			cout << USERID[i].balance << endl;
-			cout << USERID[i].balance << endl;
+
 
 			USERID[i] = { number, acbalance, name, password };
 			i = i + 1;
+			///The inputs from the user are assigned to the ith place on the array
 
 		}
 
@@ -113,9 +114,12 @@ int main()
 			cin >> target;
 			cout << "Transfer amount";
 			cin >> tAmount;
+			/// Getting the account info from the user
 
 			int targetActual = getIndex(USERID, target);
 			int originActual = getIndex(USERID, origin);
+
+			///appending the taget and origin account number to thier value on the array
 
 			double balanceholder = 0;
 			double newbalance = 0;
