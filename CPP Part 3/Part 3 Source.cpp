@@ -10,6 +10,7 @@ struct BankAccount
 	double balance;
 	std::string cname;
 	std::string password;
+	double iRate;
 
 };
 
@@ -26,6 +27,30 @@ struct Customer
 
 Customer Customers[10];
 
+double getDouble()
+{
+	
+	double i;
+	while (!(cin >> i)) {
+		cin.clear();
+		cin.ignore(999, '\n');
+		cout << "Error: Invalid Input. Please Re-Enter";
+	}
+	cout << endl;
+	return i;
+}
+
+int getInt()
+{
+	int i;
+	while (!(cin >> i)) {
+		cin.clear();
+		cin.ignore(999, '\n');
+		cout << "Error: Invalid Input. Please Re-Enter";
+	}
+	cout << endl;
+	return i;
+}
 
 ///The bank account struct
 
@@ -103,6 +128,7 @@ int main()
 	double acbalance = 0;
 	std::string name = "";
 	std::string password = "";
+	double interestRate = 0;
 
 	BankAccount USERID[10];
 	USERID[0] = { number, acbalance, name, password };
@@ -138,6 +164,7 @@ int main()
 		cout << "1 = Create New Account" << endl;;
 		cout << "2 = Transfer" << endl;
 		cout << "3 = Exit" << endl;
+
 		cin >> command;
 		///Rudementary menu driven inerface
 
@@ -177,31 +204,41 @@ int main()
 			std::getline(std::cin, password);
 			cout << endl;
 			cout << "enter your accoutn number :";
-			cin >> number;
+			number = getInt();
 			while (number<1000 || number > 9999)
 			{
 				cout << "Invalid Input, Reenter number:";
-				cin >> number;
+				number = getInt();
 				cout << endl;
 			}
 			cout << endl;
 			cout << "enter your accoutnt balance:";
-			while (acbalance<9999)
+			acbalance = getDouble();
+			cout << "enter your accoutnt interest Rate:";
+			interestRate = getDouble();
+			while (interestRate <= 0.01 || interestRate > 15.0)
 			{
-				cout << "Invalid Input, account balance:";
-				cin >> number;
+				cout << "Invalid Input, Reenter number:";
+				interestRate = getDouble();
 				cout << endl;
 			}
-			cin >> acbalance;
+			cout << "LOOK "<< interestRate << endl;
+			//while (acbalance<0)
+			//{
+			//	cout << "Invalid Input, account balance:";
+			//	USERID[i].balance = getDouble();
+			//	cout << endl;
+			//}
 			cout << endl;
 			///This is prompting the user for input and asigning the inputs to the variables declared above
 
 			i = emptyvalue(USERID);
 
-			USERID[i].acnumber = number;
-			USERID[i].balance = acbalance;
 			USERID[i].cname = name;
 			USERID[i].password = password;
+			USERID[i].acnumber = number;
+			USERID[i].balance = acbalance;
+			USERID[i].iRate = interestRate;
 
 
 
@@ -210,6 +247,7 @@ int main()
 			cout << "your password " << USERID[i].password << endl;
 			cout << "your account number " << USERID[i].acnumber << endl;
 			cout << "your account balance " << USERID[i].balance << endl;
+			cout << "your interest Rate " << USERID[i].iRate << endl;
 			///The inputs from the user are assigned to the ith place on the array
 
 		}
@@ -258,6 +296,43 @@ int main()
 			cout << "New Target Account Balance" << USERID[targetActual].balance << endl;
 			cout << "New Origin Account Balance" << USERID[originActual].balance << endl;
 
+
+
 		}
+
+		cout << "Enter an amount for auto Deposit" << endl ;
+		double deposit = getDouble();
+		cout << "Enter an amount for auto  Withdrawal" << endl;
+		double withdraw = getDouble();
+
+		double startbalance;
+		double endbalance;
+		double interestEarned;
+		int month;
+
+		for (int i = 0; i <= 9; i++)
+		{
+			if (USERID[i].acnumber == 0)
+			{
+				break;
+			}
+
+			cout << "the following iformation is regarding account #";
+			cout << USERID[i].acnumber << endl;
+			
+			for (int month = 1; month <= 12; month++)
+			{
+				cout << "month number" << month << endl;
+				startbalance = USERID[i].balance;
+				interestEarned = ((startbalance*USERID[month].iRate) / 12);
+				USERID[i].balance = startbalance + interestEarned + deposit - withdraw;
+
+				cout << "account balance " << USERID[i].balance << endl;
+				
+			}
+		}
+
+
+
 	}
 }
