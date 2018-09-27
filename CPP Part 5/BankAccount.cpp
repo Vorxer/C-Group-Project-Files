@@ -1,6 +1,30 @@
 #include <iostream>
 using namespace std;
 
+int getInt()
+{
+	int i;
+	while (!(cin >> i)) {
+		cin.clear();
+		cin.ignore(999, '\n');
+		cout << "Error: Invalid Input. Please Re-Enter";
+	}
+	cout << endl;
+	return i;
+}
+
+double getDouble()
+{
+
+	double i;
+	while (!(cin >> i)) {
+		cin.clear();
+		cin.ignore(999, '\n');
+		cout << "Error: Invalid Input. Please Re-Enter";
+	}
+	cout << endl;
+	return i;
+}
 
 class BankAccount
 {
@@ -48,7 +72,7 @@ public:
 
 			cout << "Enter Account balance" << endl;
 
-			cin >> bal;
+			bal=getDouble();
 
 		};
 
@@ -57,7 +81,7 @@ public:
 		{
 			cout << "Enter Account Number" << endl;
 
-			cin >> number;
+			number=getInt();
 
 		}
 
@@ -80,7 +104,7 @@ int main()
 	{
 		accounts[i].enterAccountData();
 		cout << "Do you wish to continue? 1=yes 0=no" << endl;
-		cin >> prompt;
+		prompt=getInt();
 		if (prompt == 0)
 		{
 			break;
@@ -103,7 +127,7 @@ int main()
 
 	int years;
 	cout << "Calculate interest for :" << endl;
-	cin >> years;
+	years = getInt();
 
 	for (int i = 0; i <= loopcontrol; i++)
 	{
@@ -117,4 +141,3 @@ int main()
 	}
 };
 
-//10:43
