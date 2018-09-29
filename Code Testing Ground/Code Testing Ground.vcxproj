@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{069B7234-80D2-461B-B095-161B785B9F6C}</ProjectGuid>
+    <ProjectGuid>{71E0DFEA-0AC1-4D80-8A99-75837BDFB730}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>CPPPart7</RootNamespace>
+    <RootNamespace>CodeTestingGround</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,6 +78,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
