@@ -90,6 +90,7 @@
     <ClCompile Include="CheckingAccount.cpp" />
     <ClCompile Include="CheckingAccountWithInterest.cpp" />
     <ClCompile Include="SavingsAccount.cpp" />
+    <ClCompile Include="Session.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
