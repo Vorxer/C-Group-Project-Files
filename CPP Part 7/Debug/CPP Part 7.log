@@ -1,0 +1,13 @@
+﻿Build started 01/10/2018 23:22:25.
+     1>Project "C:\Users\Dinura\Desktop\CPP Project\CPP Part 7\CPP Part 7.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Session.cpp
+         Session.cpp
+     1>c:\users\dinura\desktop\cpp project\cpp part 7\checkingaccountwithinterest.h(24): warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\dinura\desktop\cpp project\cpp part 7\session.cpp(136): error C2146: syntax error : missing ';' before identifier 'temp'
+     1>c:\users\dinura\desktop\cpp project\cpp part 7\session.cpp(136): error C2064: term does not evaluate to a function taking 8 arguments
+     1>Done Building Project "C:\Users\Dinura\Desktop\CPP Project\CPP Part 7\CPP Part 7.vcxproj" (Build target(s)) -- FAILED.
+
+Build FAILED.
+
+Time Elapsed 00:00:00.91

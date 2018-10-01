@@ -11,27 +11,29 @@ class BankAccount
 protected:
 	int acnumber;
 	double balance;
-	BankBranch homeBranch(int BSBNo, int postcode, std::string address);
+	//BankBranch homeBranch;
 
 public:
-	BankAccount(int acnumber, double balance, BankBranch homeBranch);
+	BankAccount::BankAccount(int inputacnumber, double inputbalance, int inputBSBNo, int inputpostcode, std::string inputaddres)
+	{
+		acnumber = inputacnumber;
+		balance = inputbalance;
+		//homeBranch.reConstruct(inputBSBNo, inputpostcode, inputaddress);
+	};
 
-	~BankAccount();
-	
+	int getAcNo();
 
-	int BankAccount::getAcNo();
+	void enterAccountData();
 
-	void BankAccount::enterAccountData();
+	void setBalance(double input);
 
-	void BankAccount::setBalance(double input);
+	void displayAccount();
 
-	void BankAccount::displayAccount();
+	double getBalance();
 
-	double BankAccount::getBalance();
+	int getInt();
 
-	int BankAccount::getInt();
-
-	double BankAccount::getDouble();
+	double getDouble();
 
 
 };

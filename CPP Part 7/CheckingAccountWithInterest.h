@@ -11,31 +11,28 @@ class CheckingAccountWithInterest : public SavingsAccount , public CheckingAccou
 protected:
 	using CheckingAccount::acnumber;
 	using CheckingAccount::balance;
-	using CheckingAccount::homeBranch;
+	//using CheckingAccount::homeBranch;
 	using SavingsAccount::iRate;
 
 
 public:
-	CheckingAccountWithInterest(int acnumber, double balance, double iRate, double monthlyFee, double numberChecks, BankBranch homeBranch);
+	CheckingAccountWithInterest(int inputacnumber, double inputbalance, double inputiRate, double inputmonthlyFee, double inputnumberChecks, int inputBSBNo, int inputpostcode, std::string inputaddress)
+		: CheckingAccount(inputacnumber,inputbalance,inputiRate,inputmonthlyFee, inputnumberChecks,inputBSBNo,inputpostcode,inputaddress)
+		, SavingsAccount(inputacnumber,inputbalance,inputiRate,inputBSBNo,inputpostcode, inputaddress)
 
-	~CheckingAccountWithInterest();
 
+	{};
 	using CheckingAccount::getAcNo;
 
 	using CheckingAccount::enterAccountData;
 
 	using CheckingAccount::setBalance;
 
-	using CheckingAccount::displayAccount;
-
 	using CheckingAccount::getBalance;
+		
+	void displayAccount();
+
+	void enterAccountData();
+
 
 };
-
-//template<class T>
-//T getDouble(T x)
-//{
-//	returb=n x
-//}
-
-//CheckingAccountWithInterest::funtion(int){ ParentClassname::method(int)}

@@ -1,10 +1,6 @@
 #include "BankAccount.h"
 
 
-BankAccount::~BankAccount()
-{
-}
-
 
 
 
@@ -41,6 +37,8 @@ void BankAccount::enterAccountData()
 	balance = bal;
 
 }
+
+
 
 void BankAccount::setBalance(double input)
 {

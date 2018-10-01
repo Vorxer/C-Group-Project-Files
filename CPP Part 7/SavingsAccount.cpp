@@ -3,9 +3,10 @@
 
 
 
-SavingsAccount::~SavingsAccount()
+double  SavingsAccount::getInterest()
 {
-}
+	return iRate;
+};
 
 
 void SavingsAccount::displayAccount()
@@ -25,3 +26,36 @@ void SavingsAccount::displayAccount()
 
 
 };
+
+void SavingsAccount::enterAccountData()
+{
+
+	int number = 0;
+	double bal = -1;
+	double interest = -1;
+
+	while (bal<1 || bal>10000)
+
+	{
+
+		cout << "Enter Account balance" << endl;
+
+		bal = getDouble();
+
+	};
+
+	while (interest < 0 || number>15)
+
+	{
+
+		cout << "Enter Intrest rate" << endl;
+
+		interest = getDouble();
+
+	};
+
+
+	acnumber = number;
+	balance = bal;
+	iRate = interest;
+}

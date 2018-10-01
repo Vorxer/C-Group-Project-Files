@@ -1,10 +1,44 @@
 #include "CheckingAccount.h"
 
 
-
-
-CheckingAccount::~CheckingAccount()
+void CheckingAccount::enterAccountData()
 {
+
+	int number = 0;
+	double bal = -1;
+
+	
+	while (bal<1 || bal>10000)
+
+	{
+
+		cout << "Enter Account balance" << endl;
+
+		bal = getDouble();
+
+	};
+
+	while (number<1000 || number>9999)
+
+	{
+
+		cout << "Enter Account balance" << endl;
+
+		number = getDouble();
+
+	};
+
+	
+
+	cout << "Enter Monthly Fee" << endl;
+	monthlyFee = getInt();
+	
+	cout << "Enter Maximum allowed number of Checks" << endl;
+	numberChecks= getInt();
+
+	acnumber = number;
+	balance = bal;
+
 }
 
 
@@ -26,7 +60,6 @@ void CheckingAccount::displayAccount()
 
 
 };
-
 double CheckingAccount::getFee()
 {
 	return monthlyFee;
