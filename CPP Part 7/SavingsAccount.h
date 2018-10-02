@@ -7,11 +7,11 @@ using namespace std;
 
 class SavingsAccount : public BankAccount
 {
-protected:
+public:
 	double iRate = 0.3;
 	
-public:
-	SavingsAccount(int inputacnumber, double inputbalance, double inputiRate, int inputBSBNo,int inputpostcode,std::string inputaddress)
+
+	SavingsAccount(int inputacnumber=0, double inputbalance=0, double inputiRate=0, int inputBSBNo=0,int inputpostcode=0,std::string inputaddress="")
 		: BankAccount(inputacnumber, inputbalance, inputBSBNo, inputpostcode, inputaddress)
 
 	{

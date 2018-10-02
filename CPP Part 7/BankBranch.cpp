@@ -1,6 +1,5 @@
 #include "BankBranch.h"
 
-
 int BankBranch::getBSB()
 {
 	return BSBNo;

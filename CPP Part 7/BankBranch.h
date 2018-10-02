@@ -5,16 +5,19 @@
 using namespace std;
 class BankBranch
 {
-protected:
+public:
 	int BSBNo;
 	int postcode;
 	std::string address;
 
-public:
+	BankBranch(int inputBSBNo = 0, int inputpostcode = 0, std::string inputaddress = "")
+	{
+		BSBNo = inputBSBNo;
+		postcode = inputpostcode;
+		address = inputaddress;
+	};
 
-	BankBranch::BankBranch() :BSBNo(0), postcode(0), address(""){};
-
-	void BankBranch::reConstruct(int inputBSBNo, int inputpostcode, std::string inputaddress)
+	void BankBranch::reConstruct(int inputBSBNo=0, int inputpostcode=0, std::string inputaddress="")
 	{
 	BSBNo = inputBSBNo;
 	postcode = inputpostcode;
@@ -24,6 +27,4 @@ public:
 	int getBSB();
 	int getPost();
 	string getAddress();
-	
-	~BankBranch();
 };

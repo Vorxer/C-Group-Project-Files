@@ -60,10 +60,12 @@ void CheckingAccount::displayAccount()
 
 
 };
+
 double CheckingAccount::getFee()
 {
 	return monthlyFee;
 }
+
 int CheckingAccount::getChecks()
 {
 	return numberChecks;

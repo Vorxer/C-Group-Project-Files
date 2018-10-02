@@ -8,15 +8,15 @@
 
 class CheckingAccountWithInterest : public SavingsAccount , public CheckingAccount
 {
-protected:
+public:
 	using CheckingAccount::acnumber;
 	using CheckingAccount::balance;
-	//using CheckingAccount::homeBranch;
+	using CheckingAccount::homeBranch;
 	using SavingsAccount::iRate;
 
 
-public:
-	CheckingAccountWithInterest(int inputacnumber, double inputbalance, double inputiRate, double inputmonthlyFee, double inputnumberChecks, int inputBSBNo, int inputpostcode, std::string inputaddress)
+
+	CheckingAccountWithInterest(int inputacnumber=0, double inputbalance=0, double inputiRate=0, double inputmonthlyFee=0, double inputnumberChecks=0, int inputBSBNo=0, int inputpostcode=0, std::string inputaddress="")
 		: CheckingAccount(inputacnumber,inputbalance,inputiRate,inputmonthlyFee, inputnumberChecks,inputBSBNo,inputpostcode,inputaddress)
 		, SavingsAccount(inputacnumber,inputbalance,inputiRate,inputBSBNo,inputpostcode, inputaddress)
 

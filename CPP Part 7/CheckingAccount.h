@@ -5,11 +5,11 @@
 
 class CheckingAccount : public BankAccount
 {
-protected:
+public:
 	double monthlyFee;
 	int numberChecks;
-public:
-	CheckingAccount(int inputacnumber, double inputbalance, double inputiRate, double inputmonthlyFee, int inputnumberChecks, int inputBSBNo, int inputpostcode, std::string inputaddress)
+
+	CheckingAccount(int inputacnumber=0, double inputbalance=0, double inputiRate=0, double inputmonthlyFee=0, int inputnumberChecks=0, int inputBSBNo=0, int inputpostcode=0, std::string inputaddress="")
 		: BankAccount(inputacnumber, inputbalance, inputBSBNo,inputpostcode, inputaddress)
 	{
 		monthlyFee=inputmonthlyFee;

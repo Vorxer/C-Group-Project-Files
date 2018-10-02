@@ -7,8 +7,6 @@
 
 using namespace std;
 
-
-
 int getInt()
 {
 	int i;
@@ -34,88 +32,141 @@ double getDouble()
 	return i;
 }
 
-
-template <class T>
-T produceReport(int acno, SavingsAccount SACs[10], CheckingAccount CACs[10], CheckingAccountWithInterest CACIs[10] ){
-	
-	for (int i = 0; i <= 10; i++)
-	{
-		if (SACs[i].getAcNo == acno){
-			return{1,acno}
-		}
-	}
-
-	for (int i = 0; i <= 10; i++)
-	{
-		if (CACs[i].getAcNo == acno){
-			return{ 1, acno }
-		}
-	}
-
-	for (int i = 0; i <= 10; i++)
-	{
-		if (CACIs[i].getAcNo == acno){
-			return{ 1, acno }
-		}
-	}
-
-	return 0;
-};
-
-
-int UserID[10];
-std::string password[10] = {};
-
-template <class T>
-T produceReport(T title, T account){
-	cout << title << endl;
-	cout << "-------------------" << endl;
-	cout << "Account Number =" << account.getNumber << endl;
-	cout << "-------------------" << endl;
-	cout << "Account Balance =" << account.getBalance << endl;
-	cout << "-------------------" << endl;
-
+template < class A>
+int getTypeInfo(A account)
+{
 	if (typeid(account) == typeid(class SavingsAccount))
 	{
-		cout << "Account Interest Rate =" << account.getInterest << endl;
-		cout << "-------------------" << endl
+		return 1;
 	}
 
 	else if (typeid(account) == typeid(class CheckingAccount))
 	{
-		cout << "Account MonthlyFee =" << account.getFee << endl;
-		cout << "-------------------" << endl;
-		cout << "Account Number of Checks =" << account.getChecks << endl;
-		cout << "-------------------" << endl
+		return 2;
 	}
 
 	else if (typeid(account) == typeid(class CheckingAccountWithInterest))
 	{
-		cout << "Account MonthlyFee =" << account.getBalance << endl;
-		cout << "-------------------" << endl
+		return 3;
+	}
+}
+
+int getLocationinfo(int acno, SavingsAccount SACs[10], CheckingAccount CACs[10], CheckingAccountWithInterest CACIs[10] ){
+	int Specifedtype = getTypeInfo(acno);
+	
+	if (Specifedtype == 1){
+		for (int i = 0; i <= 10; i++)
+		{
+			if (SACs[i].acnumber == acno){
+				return acno;
+			}
+		}
 	}
 
-	return 0;
+	if (Specifedtype == 2){
+		for (int i = 0; i <= 10; i++)
+		{
+			if (CACs[i].acnumber == acno){
+				return acno;
+			}
+		}
+	}
+
+	if (Specifedtype == 3){
+		for (int i = 0; i <= 10; i++)
+		{
+			if (CACIs[i].CheckingAccount::acnumber == acno){
+				return acno;
+			}
+		}
+	}
+};
+
+
+void SavingSpecifics(SavingsAccount account)
+{
+	cout << "Account Interest Rate =" << account.getInterest() << endl;
+	cout << "-------------------" << endl;
+}
+
+void CheckingAccountSpecific(CheckingAccount account)
+{	
+	cout << "Account MonthlyFee =" << account.getFee() << endl;
+	cout << "-------------------" << endl;
+	cout << "Account Number of Checks =" << account.getChecks() << endl;
+	cout << "-------------------" << endl;
+}
+
+void CheckingAccountWithIntSpecific(CheckingAccountWithInterest account)
+{
+	cout << "Account MonthlyFee =" << account.getFee() << endl;
+	cout << "-------------------" << endl;
+	cout << "Account Number of Checks =" << account.getChecks() << endl;
+	cout << "-------------------" << endl;
+	cout << "Account Interest Rate =" << account.getInterest() << endl;
+	cout << "-------------------" << endl;
+};
+
+template<class Z>
+int getEmpty(Z input[10])
+{
+	for (size_t i = 0; i < 10; i++)
+	{
+		if (input[i].acnumber == 0)
+		{
+			return i;
+		};
+	};
+}
+
+
+
+template < class T, class U>
+
+void produceReport(T title, U account){
+	cout << title << endl;
+	cout << "-------------------" << endl;
+	cout << "Account Number =" << account.getAcNo() << endl;
+	cout << "-------------------" << endl;
+	cout << "Account Balance =" << account.getBalance() << endl;
+	cout << "-------------------" << endl;
+
+	bool control = false;
+	int type = getTypeInfo(account);
+
+	if (type==1)
+	{
+		SavingSpecifics(account);
+	}
+
+	else if (type == 2)
+	{
+		CheckingAccountSpecific(account);
+	}
+
+	else if (type == 3)
+	{
+		CheckingAccountWithIntSpecific(account);
+	}
+
 };
 
 
 
 void main()
 {
-	SavingsAccount temp(0, 0, 0, 0, 0, "");
-	SavingsAccount SavingsAccounts[10] = { temp, temp, temp, temp, temp, temp, temp, temp, temp, temp };
-	bool mainloopexit = false;
-
-	CheckingAccount temp2(0, 0, 0, 0, 0, 0, 0, "");
-	CheckingAccount CheckingAccounts[10] = { temp2, temp2, temp2, temp2, temp2, temp2, temp2, temp2, temp2, temp2 };
 	
-	CheckingAccountWithInterest temp3(0, 0, 0, 0, 0, 0, 0, "");
-	CheckingAccountWithInterest CheckingAccountsWithInterest[10] = { temp3, temp3, temp3, temp3, temp3, temp3, temp3, temp3, temp3, temp3 };
-	CheckingAccountWithInterest(0,0,0,0,0,0,0,"")
+	CheckingAccountWithInterest  temp;
 
-	//SavingsAccount SavingsAccounts[10] = { temp, temp, temp, temp, temp, temp, temp, temp, temp, temp };
-	//bool mainloopexit = false;
+	SavingsAccount SavingsAccounts[10];
+	CheckingAccount CheckingAccounts[10];	
+	CheckingAccountWithInterest CheckingAccountsWithInterest[10];
+	cout << getEmpty(SavingsAccounts) << endl;
+	system("Pause");
 
+
+	bool mainloopexit = false;
+	
 	cout << "Session Intiated" << endl;
 	cout << "Select a function" << endl;
 	cout << "1 = Create new account" << endl;
@@ -135,24 +186,29 @@ void main()
 		if (secondcommand==1)
 		{
 			cout << "Select the type of account" << endl;
-			int actype = 1;
+			int actype= getInt();
 			if (actype == 1)
 			{
-				CheckingAccount temp(0, 0, 0, 0, 0, 0, 0, "");
-				temp.enterAccountData();
+				
 				//append the account to the list;
+				SavingsAccount temp;
+				temp.enterAccountData();
+				SavingsAccounts[getEmpty(SavingsAccounts)] = temp;
 			}
 
-			if (actype == 1)
+			if (actype == 2)
 			{
-				SavingsAccount temp(0, 0, 0, 0, 0, "");
+				CheckingAccount temp;
 				temp.enterAccountData();
+				CheckingAccounts[getEmpty(CheckingAccounts)] = temp;
+
 			}
 			
-			if (actype == 0)
+			if (actype == 3)
 			{
-				//CheckingAccountWithInterest  temp(0, 0, 0, 0, 0, 0, 0 ,0 ,0 , "");;
-				//append the account to the list
+				CheckingAccountWithInterest  temp;
+				temp.enterAccountData();
+				CheckingAccountsWithInterest[getEmpty(CheckingAccountsWithInterest)] = temp;
 			}
 
 
@@ -160,11 +216,39 @@ void main()
 
 
 
-		if (secondcommand == 4)
+		if (secondcommand == 3)
 		{
 			for (int i = 0; i <= 10; i++)
 			{
-				produceReport(inputAcNo, SavingsAccounts,CheckingAccounts,CheckingAccountsWithInterest)
+				//if (SavingsAccounts[i].acnumber!=0);
+				//CheckingAccount CheckingAccounts[i];
+				//CheckingAccountWithInterest CheckingAccountsWithInterest[i];
+			}
+
+		}
+
+		getLocationinfo(1234, SavingsAccounts, CheckingAccounts, CheckingAccountsWithInterest);
+
+
+		if (secondcommand == 4)
+		{
+			cout << "enter the account number to get dietals for";
+			int targetaccount = getInt();
+
+			int TypeSpecifier = getTypeInfo(targetaccount);
+			if (TypeSpecifier == 1)
+			{
+				SavingsAccounts[getLocationinfo(targetaccount,SavingsAccounts,CheckingAccounts,CheckingAccountsWithInterest)].displayAccount();
+			}
+
+			if (TypeSpecifier == 2)
+			{
+				CheckingAccounts[getLocationinfo(targetaccount, SavingsAccounts, CheckingAccounts, CheckingAccountsWithInterest)].displayAccount();
+			}
+
+			if (TypeSpecifier == 3)
+			{
+				CheckingAccountsWithInterest[getLocationinfo(targetaccount, SavingsAccounts, CheckingAccounts, CheckingAccountsWithInterest)].displayAccount();
 			}
 
 		}
